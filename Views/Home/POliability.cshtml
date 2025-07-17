@@ -1,0 +1,225 @@
+﻿@model LMS.Models.PoLiabilityMaster
+
+@{
+    ViewBag.Title = "POliability";
+}
+
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success">@ViewBag.Message</div>
+}
+
+<head>
+
+    <style>
+        body {
+            overflow-y: auto;
+            max-height: 100vh;
+        }
+    </style>
+
+    <meta charset="utf-8" />
+    <title>POliability</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+
+
+    <div class="container my-4">
+        <h2 class="text-center mb-4">POliability</h2>
+
+        <div class="bg-light p-4 rounded shadow">
+            <h4 class="text-center fw-semibold mb-4">
+                <em>Book <span class="text-dark">Liability Details</span></em>
+            </h4>
+
+            @using (Html.BeginForm("PoLiability", "Home", FormMethod.Post))
+            {
+
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">PO Number</label>
+                        
+                        @Html.TextBoxFor(m => m.PONumber, new { @class = "form-control only-numbers", placeholder = "Enter PO Number" })
+
+
+
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Vendor Code</label>
+                    
+                        @Html.TextBoxFor(m => m.VendorCode, new { @class = "form-control only-numbers", placeholder = "Enter Vendor Code" })
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">PO Description</label>
+                
+                    @Html.TextBoxFor(m => m.PODescription, new { @class = "form-control only-letters", placeholder = "Enter PO Description" })
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Vendor Name</label>
+                   
+                    @Html.TextBoxFor(m => m.VendorName, new { @class = "form-control only-letters", placeholder = "Enter Vendor Name" })
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">PO Start Date</label>
+                      
+                        @Html.TextBoxFor(m => m.POStartDate, new { @class = "form-control", type = "date" })
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">PO End Date</label>
+                     
+                        @Html.TextBoxFor(m => m.POEndDate, new { @class = "form-control", type = "date" })
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">PO Value</label>
+               
+                    @Html.TextBoxFor(m => m.POValue, new { @class = "form-control only-numbers", placeholder = "Enter PO Value" })            
+                </div>
+
+
+
+
+
+
+
+                <!-- Data Table -->
+                <div class="table-responsive mt-4">
+                    <table id="liabilityTable" class="table table-bordered table-striped" style="width:100%">
+
+                        <thead class="table-info text-center">
+                            <tr>
+                                <th>Sr No.</th>
+                                <th>Qtr NO.</th>
+                                <th>IS LIABILITY BOOKED FOR CURRENT Qtr.</th>
+                                <th>Liability Value ($)</th>
+                                <th>SES No.</th>
+                                <th>Status</th>
+                                <th>Remarks</th>
+                                <th>F&A Remarks</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            <tr>
+                                <td>1</td>
+                                <td>2023-24-04</td>
+                                <td>YES</td>
+                                <td>3613730</td>
+                                <td>1001532107</td>
+                                <td style="background-color: green; color: white;">Approved</td>
+                                <td>Tentative liability booked for Q-4</td>
+                                <td>OK</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>2024-25-Q1</td>
+                                <td>YES</td>
+                                <td>1002614.1</td>
+                                <td>1001563241</td>
+                                <td style="background-color: green; color: white;">Approved</td>
+                                <td>SUMBITTED</td>
+                                <td>OK</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>2024-25-Q2</td>
+                                <td>YES</td>
+                                <td>3982762.2</td>
+                                <td>1001605404</td>
+                                <td style="background-color: green; color: white;">Approved</td>
+                                <td></td>
+                                <td>OK</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>2024-25-Q3</td>
+                                <td>YES</td>
+                                <td>1520301.7</td>
+                                <td>1001648443</td>
+                                <td style="background-color: green; color: white;">Approved</td>
+                                <td>Q3</td>
+                                <td>OK</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>2024-Q4</td>
+                                <td>YES</td>
+                                <td>1520301.7</td>
+                                <td>1001648443</td>
+                                <td style="background-color: green; color: white;">Approved</td>
+                                <td>Q4</td>
+                                <td>OK</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- EIC Remarks and Button -->
+        <div class="mb-3 mt-4" style="width:89%;">
+            <label class="form-label">EIC Remarks</label>
+            
+            @Html.TextBoxFor(m => m.EICRemarks, new { @class = "form-control", placeholder = "Enter EIC Remarks" })
+        </div>
+                <div class="text-center">
+                    @*<button class="btn btn-success px-4">Forward to F&A</button>*@
+                    <button type="submit" class="btn btn-success px-4">Forward to F&A</button>
+                    
+
+                </div>
+            }
+            </div>
+    </div>
+
+    <!-- DataTable Initialization Script -->
+    <script>
+        $(document).ready(function () {
+            $('#liabilityTable').DataTable({
+                paging: true,
+                searching: true
+            });
+        });
+    </script>
+
+
+    <script>
+        $(document).ready(function () {
+
+            // When user focuses, clear the field
+            $('input').on('focus', function () {
+                if ($(this).val() === $(this)[0].defaultValue) {
+                    $(this).val('');
+                }
+            });
+
+            // Allow only numbers
+            $('.only-numbers').on('input', function () {
+                this.value = this.value.replace(/[^0-9]/g, '');
+            });
+
+            // Allow only letters and spaces
+            $('.only-letters').on('input', function () {
+                this.value = this.value.replace(/[^a-zA-Z\s]/g, '');
+            });
+        });
+    </script>
+
+
+

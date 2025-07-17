@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Report";
+}
+
+<h2>Report</h2>
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+<div class="container mt-5 p-4 bg-lightweight rounded shadow" style="max-width: 900px;">
+    <h2 class="text-center fw-semibold mb-4">Report</h2>
+
+    <form>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="financial-year" class="form-label">Financial Year:</label>
+                <select class="form-select" id="financial-year">
+                    <option>All</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="quarter-number" class="form-label">Quarter Number:</label>
+                <select class="form-select" id="quarter-number">
+                    <option>All</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <label for="authorised-persons" class="form-label">Authorised Persons:</label>
+                <select class="form-select" id="authorised-persons">
+                    <option>All</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="status" class="form-label">Status:</label>
+                <select class="form-select" id="status">
+                    <option>All</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary px-5">Check</button>
+        </div>
+    </form>
+</div>
+

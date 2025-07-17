@@ -1,0 +1,170 @@
+﻿@model List<LMS.Models.PoLiabilityMaster>
+
+
+@{
+    ViewBag.Title = "EIC";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            overflow-y: auto;
+            max-height: 100vh;
+        }
+    </style>
+    <style>
+        /* Adds margin below the search bar */
+        div.dataTables_filter {
+            margin-bottom: 15px; /* Adjust as needed */
+        }
+    </style>
+
+
+    <meta charset="utf-8" />
+    <title>EIC</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
+    <!-- jQuery -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+
+    <div class="container mt-4">
+        <h4 class="text-center fw-semibold mb-4">
+            List of <span class="spaceing  bg-warning px-2">PO's for Liability Creation</span>
+        </h4>
+
+        <div class="table-responsive" style="overflow-x: auto;">
+            <table id="eicTable" class="table table-bordered align-middle text-center" style="min-width: 1500px;">
+                <thead class="table-info">
+                    <tr>
+                        <th scope="col">Sr No.</th>
+                        <th scope="col">PO Number</th>
+                        <th scope="col">Vendor Name</th>
+                        <th scope="col" class="text-start">PO Description</th>
+                        <th scope="col">Contract Start Date</th>
+                        <th scope="col">PO Validity Date</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Create Liability</th>
+                    </tr>
+                </thead>
+                @*<tbody>
+            <tr>
+                <td>1.</td>
+                <td>5300036307</td>
+                <td>M/s. AWASTHI TRADERS</td>
+                <td class="text-start">ARC FOR CIVIL JOBS IN PLANT AREA AT GAIL, PATA.</td>
+                <td>10/03/2022</td>
+                <td>25/07/2025</td>
+                <td style="background-color: green;"><span class="badge bg-success">Approved by F&amp;A</span></td>
+                <td><button class="btn btn-sm fw-bold bg-danger text-white">Create/<br>View</button></td>
+            </tr>
+            <tr>
+                <td>2.</td>
+                <td>5300039858</td>
+                <td>M/s. A K ENTERPRISES.</td>
+                <td class="text-start">
+                    CONSTRUCTION OF NEW LUBRICANT OIL STORE AND CENTRAL LABORATORY EXTENSION WORKS AT GAIL PATA
+                </td>
+                <td>25/10/2023</td>
+                <td>30/06/2025</td>
+                <td style="background-color: green;"><span class="badge bg-success">Approved by F&amp;A</span></td>
+                <td><button class="btn btn-sm fw-bold bg-danger text-white">Create/<br>View</button></td>
+            </tr>
+            <tr>
+                <td>3.</td>
+                <td>5300039884</td>
+                <td>M/s. MAA KELA ENTERPRISES.</td>
+                <td class="text-start">
+                    CONSTRUCTION REPAIR AND RE-CARPETING OF VARIOUS ROADS WITHIN THE PLANT AND EXTENSION OF FABRICATION AREAS OF IOPS AND GCU AT GAIL, PATA.
+                </td>
+                <td>30/10/2023</td>
+                <td>28/02/2025</td>
+                <td style="background-color: green;"><span class="badge bg-success">Approved by F&amp;A</span></td>
+                <td><button class="btn btn-sm fw-bold bg-danger text-white">Create/<br>View</button></td>
+            </tr>
+            <tr>
+                <td>4.</td>
+                <td>5300040715</td>
+                <td>M/s. SAI BUILDERS</td>
+                <td class="text-start">
+                    CONSTRUCTION OF SHED FOR EXTENSION OF CENTRAL WORKSHOP AND CONSTRUCTION OF SHEDS AT VARIOUS LOCATIONS AT GAIL, PATA.
+                </td>
+                <td>05/03/2024</td>
+                <td>21/02/2027</td>
+                <td style="background-color: green;"><span class="badge bg-success">Approved by F&amp;A</span></td>
+                <td><button class="btn btn-sm fw-bold bg-danger text-white">Create/<br>View</button></td>
+            </tr>
+            <tr>
+                <td>5.</td>
+                <td>5300041396</td>
+                <td>M/s. SAI BUILDERS</td>
+                <td class="text-start">
+                    CONTRACT FOR SERVICE FOR UPKEEP AND MAINTENANCE OF HORTICULTURE WORKS AT GAIL PATA, GAIGAON CSF COLONY MAINTENANCE OF PLANTATION IN GAIL LAND — WILD GRASS CUTTING AT GAIL, PATA (SCHEDULE - 1 / GROUP - A).
+                </td>
+                <td>01/11/2024</td>
+                <td>31/10/2026</td>
+                <td style="background-color: green;"><span class="badge bg-success">Approved by F&amp;A</span></td>
+                <td><button class="btn btn-sm fw-bold bg-danger text-white">Create/<br>View</button></td>
+            </tr>
+            <tr>
+                <td>6.</td>
+                <td>5300041397</td>
+                <td>M/s. HS Utility services.</td>
+                <td class="text-start">
+                    CONTRACT FOR SERVICE FOR UPKEEP AND MAINTENANCE OF HORTICULTURE WORKS AT GAIL PATA, GAIGAON CSF COLONY MAINTENANCE OF LAWN POTTED, PLANTS SHRUBS AND NURSERY — WILD GRASS CUTTING AT GAIL, PATA (SCHEDULE - 2 / GROUP - B).
+                </td>
+                <td>01/11/2024</td>
+                <td>07/11/2026</td>
+                <td style="background-color: green;"><span class="badge bg-success">Approved by F&amp;A</span></td>
+                <td><button class="btn btn-sm fw-bold bg-danger text-white">Create/<br>View</button></td>
+            </tr>
+        </tbody>*@
+
+                <tbody>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr>
+                            <td>@(i + 1).</td>
+                            <td>@Model[i].PONumber</td>
+                            <td>@Model[i].VendorName</td>
+                            <td class="text-start">@Model[i].PODescription</td>
+                            <td>@Model[i].POStartDate.ToString("dd/MM/yyyy")</td>
+                            <td>@Model[i].POEndDate.ToString("dd/MM/yyyy")</td>
+                            <td style="background-color: green;">
+                                <span class="badge bg-success">Approved by F&A</span>
+                            </td>
+                            <td>
+                                <a class="btn btn-sm fw-bold bg-danger text-white" href="@Url.Action("PoLiability", "Home", new { poNumber = Model[i].PONumber })">Create/<br />View</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+
+            </table>
+        </div>
+    </div>
+
+    <!-- DataTables Script -->
+    <script>
+        $(document).ready(function () {
+            $('#eicTable').DataTable({
+                scrollX: true,       // Enables horizontal scroll
+                paging: true,
+                searching: true
+            });
+        });
+    </script>
+</body>
+</html>

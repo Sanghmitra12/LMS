@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "scheduleDashboard";
+}
+
+<head>
+    <style>
+        body {
+            overflow-y: auto;
+            max-height: 100vh;
+        }
+    </style>
+    <style>
+        /* Adds margin below the search bar */
+        div.dataTables_filter {
+            margin-bottom: 15px; /* Adjust as needed */
+        }
+    </style>
+    <meta charset="utf-8" />
+    <title>scheduleDashboard</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+
+    <div class="container my-5">
+        <h2 class="text-center mb-4">
+            Create/ View <span class="highlight">Schedule for 2025-Q1</span>
+        </h2>
+
+        <div class="table-responsive" style="overflow-x: auto;">
+            <table id="scheduleTable" class="table table-bordered text-center align-middle" style="min-width: 1400px;">
+                <thead class="table-info">
+                    <tr>
+                        <th scope="col">Sr No.</th>
+                        <th scope="col">Schedule Name</th>
+                        <th scope="col">Employee Name</th>
+                        <th scope="col">Designation</th>
+                        <th scope="col">Schedule Created on</th>
+                        <th scope="col">Create Schedule</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Example Row (Remove or update dynamically) -->
+                   
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- DataTables Initialization -->
+    <script>
+        $(document).ready(function () {
+            $('#scheduleTable').DataTable({
+                scrollX: true,
+                paging: true,
+                searching: true
+            });
+        });
+    </script>
+
+</body>
+
